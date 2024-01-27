@@ -1,0 +1,30 @@
+*{
+    margin: 0%;
+    padding: 0;
+    color: #ff9900 !important;
+    box-sizing: border-box;
+    
+    
+}
+body{
+    overflow-x: hidden;
+    background-color: hsl(40, 100%, 95%) !important; 
+}
+.navbar{
+    background-color: #1c2331 !important;
+
+
+}
+
+#dropdown-basic{
+    border: 2px solid #ff9900;
+    font-weight: 500;
+    margin-right: 135px;
+    background-color: #1c2331 !important;
+    color: #ff9900;
+}
+.drop-menu{
+    position: absolute;
+    color: #ff9900;
+    background-color: #1c2331;
+}

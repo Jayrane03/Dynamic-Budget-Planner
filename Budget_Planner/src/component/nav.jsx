@@ -1,0 +1,34 @@
+import { useState } from "react"
+import React from 'react'
+import "../css/nav.css"
+import {Navbar,Container ,Dropdown }from 'react-bootstrap'
+
+const Nav = () => { 
+  const [selectedCurrency, setSelectedCurrency] = useState('Rs');
+
+const handleSelect = (currency) => {
+  setSelectedCurrency(currency);
+};
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary">
+    <Container>
+      <Navbar.Brand href="#">Navbar</Navbar.Brand>
+    </Container>
+
+    <Dropdown onSelect={handleSelect}>
+      <Dropdown.Toggle className="fw-bold" id="dropdown-basic">
+       {selectedCurrency}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu className='drop-menu'>
+      
+        <Dropdown.Item className="fw-bold" eventKey="Rs">Rs</Dropdown.Item>
+        <Dropdown.Item className="fw-bold" eventKey="USD">USD</Dropdown.Item>
+        <Dropdown.Item className="fw-bold" eventKey="EURO">EURO</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </Navbar>
+  )
+}
+
+export default Nav
