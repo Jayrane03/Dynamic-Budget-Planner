@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../css/cont.css";
 
 const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance }) => {
-  let remainIncome = totalBudget - totalIncome;
+  let remainIncome = totalIncome - totalBudget;
   // remainIncome = Math.max(remainIncome, 0);
   return (
     <div className="output flex">
