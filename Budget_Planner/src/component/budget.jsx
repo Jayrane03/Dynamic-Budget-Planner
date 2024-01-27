@@ -56,7 +56,7 @@ const Budget = () => {
   //   setIncomeAmount(event.target.value);
   // };
 
-  const handleAddIncome = () => {
+  const setIncome = () => {
     if (incomeName && incomeAmount) {
       const newIncomeItem = { name: incomeName, amount: incomeAmount };
       setIncomeList(prevIncomeList => [...prevIncomeList, newIncomeItem]);
@@ -79,7 +79,7 @@ const Budget = () => {
 
   const expenses = () => {
     if (expName && expAmount) {
-      const newExpItem ={name1: expName ,amount: expAmount};
+      const newExpItem ={name1: expName ,amount1: expAmount};
       setExpList(preExpList =>[... preExpList ,newExpItem]);
       setExpName('')
       setExpAmount('')
@@ -114,7 +114,7 @@ const Budget = () => {
             placeholder="Income Amount"
           />
           <br />
-          <button onClick={handleAddIncome} className="submit text-dark" id="total_amount_button">
+          <button onClick={setIncome} className="submit text-dark" id="total_amount_button">
             Submit
           </button>
         </div>
@@ -190,12 +190,13 @@ const Budget = () => {
         <h4 className="d-flex justify-content-end me-3 ">Total Expenses : {totalExp} </h4>
          
            <ul id="list">
-      {expList.map((item1, index) => (
-        <React.Fragment key={index}>
-          <li className="fw-bold">{item1.name1} - {item1.amount1}</li>
-          <br />
-        </React.Fragment>
-      ))}
+           {expList.map((item, index) => (
+  <React.Fragment key={index}>
+    <li className="fw-bold">{item.name1} - {item.amount1}</li>
+    <br />
+  </React.Fragment>
+))}
+
     </ul>
         </div>
       </div>
