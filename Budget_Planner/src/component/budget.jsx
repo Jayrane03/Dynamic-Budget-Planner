@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Alert} from 'react-bootstrap'
 import "../css/cont.css";
 
 const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance }) => {
@@ -47,7 +48,9 @@ const Budget = () => {
   const [totalBudget, setTotalBudget] = useState(0); // Initialize totalBudget state
   const [budgetValue, setBudgetValue] = useState(''); // Initialize budgetValue state
   const [budgetErrVisible, setBudgetErrVisible] = useState(false); // Initialize budgetErrVisible state
-
+  const [emptyBud, setEmptyBud] = useState(false); // Initialize budgetErrVisible state
+  // const [emptyIncome, setemptyIncome] = useState(false); // Initialize budgetErrVisible state
+  
   // const handleIncomeNameChange = (event) => {
   //   setIncomeName(event.target.value);
   // };
@@ -57,41 +60,97 @@ const Budget = () => {
   // };
 
   const setIncome = () => {
-    if (incomeName && incomeAmount) {
-      const newIncomeItem = { name: incomeName, amount: incomeAmount };
-      setIncomeList(prevIncomeList => [...prevIncomeList, newIncomeItem]);
-      setIncomeName('');
-      setIncomeAmount('');
-      setTotalIncome(prevTotalIncome => prevTotalIncome + parseInt(incomeAmount));
+  
+    if(incomeName ==="" ||incomeAmount === ""){
+      setEmptyBud(true);
+      setTimeout(() => {
+        setEmptyBud(false);
+      }, 5000);
+
+    }
+    else{
+      if (incomeName && incomeAmount) {
+        const newIncomeItem = { name: incomeName, amount: incomeAmount };
+        setIncomeList(prevIncomeList => [...prevIncomeList, newIncomeItem]);
+        setIncomeName('');
+        setIncomeAmount('');
+        let data = totalIncome + parseFloat(incomeAmount)
+      
+        setTotalIncome(data.toFixed(2));
+      }
     }
   };
- 
+  
 
   const setBudget = () => {
-    if (isNaN(budgetValue) || budgetValue <= 0) {
+    if (budgetValue === "") {
+      setEmptyBud(true);
+      setTimeout(() => {
+        setEmptyBud(false);
+      }, 5000);
+    } else if (budgetValue > incomeAmount) {
       setBudgetErrVisible(true);
+      setTimeout(() => {
+        setBudgetErrVisible(false);
+      }, 5000);
+      return; // Stop further execution of the function
     } else {
-      setTotalBudget(prevTotalBudget => prevTotalBudget + parseInt(budgetValue));
-    
-      setBudgetErrVisible(false);
+      if (isNaN(budgetValue) || parseFloat(budgetValue) <= 0) {
+        setEmptyBud(true);
+        setTimeout(() => {
+          setEmptyBud(false);
+        }, 5000);
+      } else {
+        setTotalBudget(prevTotalBudget => prevTotalBudget + parseFloat(budgetValue));
+        setEmptyBud(false);
+      }
     }
   };
+  
 
   const expenses = () => {
-    if (expName && expAmount) {
-      const newExpItem ={name1: expName ,amount1: expAmount};
-      setExpList(preExpList =>[... preExpList ,newExpItem]);
-      setExpName('')
-      setExpAmount('')
-      setTotalExp(preTotalExp => preTotalExp + parseInt(expAmount))
-
+    if(expName==="" || expAmount ==="" ){
+      setEmptyBud(true);
+      setTimeout(() => {
+        setEmptyBud(false);
+      }, 5000);
+    }
+    else{
+      if (expName && expAmount) {
+        const newExpItem ={name1: expName ,amount1: expAmount};
+        setExpList(preExpList =>[... preExpList ,newExpItem]);
+        setExpName('')
+        setExpAmount('')
+        let exp_data = totalExp + parseFloat(expAmount)
       
+        setTotalExp(exp_data.toFixed(2));
+  
+        
+      }
     }
   };
 
   return (
     <>
+    
       <div className="container">
+      <div className="error_budget">
+      {budgetErrVisible && (
+        <Alert variant="warning">
+          Budget Amount cannot be greater than Income Amount.
+        </Alert>
+      )}
+       {emptyBud && (
+        <Alert variant="warning">
+         Values cannot be empty !
+        </Alert>
+      )}
+        {/* {emptyIncome && (
+        <Alert variant="warning">
+       Enter the Income Value first 
+        </Alert>
+      )} */}
+      </div>
         <div className="income_con con">
           <h2>Income</h2>
           <br />
@@ -122,7 +181,7 @@ const Budget = () => {
           <h2>Budget</h2>
           <br />
           <p className="hide error budget-error" id="budget_err">
-            Value can't be empty or in negative.
+           Value can't be empty
           </p>
           <input
             type="text"
@@ -167,8 +226,8 @@ const Budget = () => {
       <BudgetTable
         totalIncome={totalIncome}
         totalBudget={totalBudget}
-        totalExp={totalExp}
-        balance={parseInt(totalBudget) - parseInt(totalExp)}
+        totalExp={parseFloat(totalExp)}
+        balance={parseFloat(totalBudget) - parseFloat(totalExp)}
       />
       <div className="exp_list">
         <h2>Income List</h2>

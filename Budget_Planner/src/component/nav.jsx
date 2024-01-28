@@ -5,14 +5,15 @@ import {Navbar,Container ,Dropdown }from 'react-bootstrap'
 
 const Nav = () => { 
   const [selectedCurrency, setSelectedCurrency] = useState('Rs');
-
+  const [amount , setAmount] = useState('');
+  
 const handleSelect = (currency) => {
   setSelectedCurrency(currency);
 };
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
     <Container>
-      <Navbar.Brand href="#">Navbar</Navbar.Brand>
+      <Navbar.Brand href="#">Budget Planner</Navbar.Brand>
     </Container>
 
     <Dropdown onSelect={handleSelect}>

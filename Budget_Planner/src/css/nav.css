@@ -28,3 +28,10 @@ body{
     color: #ff9900;
     background-color: #1c2331;
 }
+.error_budget{
+   position: absolute;
+   color: #ff9900;
+   z-index: 1;
+   /* background-color: #1c2331; */
+
+}
