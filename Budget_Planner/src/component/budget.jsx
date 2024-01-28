@@ -49,7 +49,7 @@ const Budget = () => {
   const [budgetValue, setBudgetValue] = useState(''); // Initialize budgetValue state
   const [budgetErrVisible, setBudgetErrVisible] = useState(false); // Initialize budgetErrVisible state
   const [emptyBud, setEmptyBud] = useState(false); // Initialize budgetErrVisible state
-  // const [emptyIncome, setemptyIncome] = useState(false); // Initialize budgetErrVisible state
+  const [emptyIncome, setemptyIncome] = useState(false); // Initialize budgetErrVisible state
   
   // const handleIncomeNameChange = (event) => {
   //   setIncomeName(event.target.value);
@@ -88,13 +88,21 @@ const Budget = () => {
       setTimeout(() => {
         setEmptyBud(false);
       }, 5000);
-    } else if (budgetValue > incomeAmount) {
+    }
+    else if(incomeAmount === 0){
+      setemptyIncome(true);
+      setTimeout(() => {
+        setemptyIncome(false);
+      }, 5000);
+    } 
+    else if (budgetValue > incomeAmount) {
       setBudgetErrVisible(true);
       setTimeout(() => {
         setBudgetErrVisible(false);
       }, 5000);
-      return; // Stop further execution of the function
-    } else {
+      // return; // Stop further execution of the function
+    }
+    else {
       if (isNaN(budgetValue) || parseFloat(budgetValue) <= 0) {
         setEmptyBud(true);
         setTimeout(() => {
@@ -145,11 +153,11 @@ const Budget = () => {
          Values cannot be empty !
         </Alert>
       )}
-        {/* {emptyIncome && (
+        {emptyIncome && (
         <Alert variant="warning">
        Enter the Income Value first 
         </Alert>
-      )} */}
+      )}
       </div>
         <div className="income_con con">
           <h2>Income</h2>

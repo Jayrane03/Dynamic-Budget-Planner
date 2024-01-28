@@ -161,6 +161,11 @@
 .budget_span{
     background-color: #ff9900;
     padding: 10px;
+    max-width: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+
     border-radius: 9px;
     
 }
