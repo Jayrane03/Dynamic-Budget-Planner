@@ -82,38 +82,47 @@ const Budget = () => {
   };
   
 
+ 
+
   const setBudget = () => {
-    if (budgetValue === "") {
+    let remainIncome = totalIncome - totalBudget;
+    if (budgetValue.trim() === "") {
       setEmptyBud(true);
       setTimeout(() => {
         setEmptyBud(false);
       }, 5000);
-    }
-    else if(incomeAmount === 0){
+    } 
+    else if (!totalIncome) {
       setemptyIncome(true);
       setTimeout(() => {
         setemptyIncome(false);
       }, 5000);
-    } 
-    else if (budgetValue > incomeAmount) {
+    }
+    else if (parseFloat(budgetValue) > parseFloat(totalIncome)) {
       setBudgetErrVisible(true);
       setTimeout(() => {
         setBudgetErrVisible(false);
       }, 5000);
-      // return; // Stop further execution of the function
+    } 
+    else if(parseFloat(remainIncome) === 0){
+      setBudgetErrVisible(true);
+      setTimeout(() => {
+        setBudgetErrVisible(false);
+      }, 5000);
     }
-    else {
-      if (isNaN(budgetValue) || parseFloat(budgetValue) <= 0) {
-        setEmptyBud(true);
-        setTimeout(() => {
-          setEmptyBud(false);
-        }, 5000);
-      } else {
-        setTotalBudget(prevTotalBudget => prevTotalBudget + parseFloat(budgetValue));
+    else if (isNaN(parseFloat(budgetValue)) || parseFloat(budgetValue) <= 0) {
+      setEmptyBud(true);
+      setTimeout(() => {
         setEmptyBud(false);
-      }
+      }, 5000);
+    } else {
+      setTotalBudget(prevTotalBudget => prevTotalBudget + parseFloat(budgetValue));
+      setEmptyBud(false);
     }
   };
+  
+  
+
   
 
   const expenses = () => {
@@ -144,22 +153,25 @@ const Budget = () => {
       <div className="container">
       <div className="error_budget">
       {budgetErrVisible && (
-        <Alert variant="warning">
+        <Alert variant="warning" className='custom-alert'>
           Budget Amount cannot be greater than Income Amount.
         </Alert>
       )}
        {emptyBud && (
-        <Alert variant="warning">
+        <Alert variant="warning" className='custom-alert'>
          Values cannot be empty !
         </Alert>
+        
       )}
+
         {emptyIncome && (
-        <Alert variant="warning">
+        <Alert variant="warning" className='custom-alert'>
        Enter the Income Value first 
         </Alert>
       )}
       </div>
-        <div className="income_con con">
+       <div className="card-container">
+       <div className="income_con con">
           <h2>Income</h2>
           <br />
           <p className={`hide error budget-error ${budgetErrVisible ? "" : "visible"}`} id="budget_err">
@@ -230,8 +242,9 @@ const Budget = () => {
           <br />
           <button onClick={expenses} className="submit text-dark" id="check_amount">Submit</button>
         </div>
+       </div>
       </div>
-      <BudgetTable
+      <BudgetTable className="bud-table"
         totalIncome={totalIncome}
         totalBudget={totalBudget}
         totalExp={parseFloat(totalExp)}

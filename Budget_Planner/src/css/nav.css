@@ -30,8 +30,14 @@ body{
 }
 .error_budget{
    position: absolute;
-   color: #ff9900;
    z-index: 1;
-   /* background-color: #1c2331; */
+  
 
+}
+.custom-alert{
+    background-color: #ff9900;
+    border: none;
+    color: #1c2331 !important;
+    font-weight: 600;
+    margin-top: 5px;
 }

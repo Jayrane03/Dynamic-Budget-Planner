@@ -1,6 +1,7 @@
 import { useState } from "react"
 import React from 'react'
 import "../css/nav.css"
+import "../css/responsive.css"
 import {Navbar,Container ,Dropdown }from 'react-bootstrap'
 
 const Nav = () => { 
@@ -16,7 +17,7 @@ const handleSelect = (currency) => {
       <Navbar.Brand href="#">Budget Planner</Navbar.Brand>
     </Container>
 
-    <Dropdown onSelect={handleSelect}>
+    <Dropdown id="currency-dropdown" onSelect={handleSelect}>
       <Dropdown.Toggle className="fw-bold" id="dropdown-basic">
        {selectedCurrency}
       </Dropdown.Toggle>

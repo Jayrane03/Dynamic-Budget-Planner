@@ -1,0 +1,44 @@
+/* for small screen media */
+@media screen and (max-width:768px){
+ .card-container{
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+ }
+
+   .card-container div{
+    margin: 50px 20px;
+   }
+   .output {
+    /* width: 292vw !important; */
+    height: 60vh;
+    margin: 100px auto;
+    /* margin-left: -77px; */
+    display: block;
+    flex-direction: column;
+    min-width: 94vw;
+   }
+   .exp_list{
+   
+    width: 91vw;
+    height: 50vh;
+    margin-bottom: 40px;
+   }
+   .list_cont h4{
+    margin: 30px 0;
+    text-align: center;
+    display: block;
+   }
+   .exp_list H2{
+    text-align: center;
+   }
+   #currency-dropdown{
+    position: absolute;
+    right: -29%;
+   }
+   .dropdown-menu.show {
+    display: block;
+    margin: 4px -70px;
+    text-align: center;
+   }
+}
