@@ -64,6 +64,7 @@ const Budget = ({currencySymbol}) => {
   const [budgetErrVisible, setBudgetErrVisible] = useState(false); // Initialize budgetErrVisible state
   const [emptyBud, setEmptyBud] = useState(false); // Initialize budgetErrVisible state
   const [emptyIncome, setemptyIncome] = useState(false); // Initialize budgetErrVisible state
+  const [budgetEmpty, setbudgetEmpty ]= useState(false); // Initialize budgetErrVisible state
   // const [curSelct , setCurSelect] = useState("");
   
   // const handleIncomeNameChange = (event) => {
@@ -147,6 +148,25 @@ const Budget = ({currencySymbol}) => {
         setEmptyBud(false);
       }, 5000);
     }
+    else if(!totalIncome || budgetValue ==" "){
+      setbudgetEmpty(true);
+      setTimeout(() => {
+        setbudgetEmpty(false);
+      }, 5000);
+    }
+
+    else if (parseFloat(totalExp) > parseFloat(totalIncome)) {
+      setBudgetErrVisible(true);
+      setTimeout(() => {
+        setBudgetErrVisible(false);
+      }, 5000);
+    } 
+    else if(parseFloat(remainIncome) === 0){
+      setBudgetErrVisible(true);
+      setTimeout(() => {
+        setBudgetErrVisible(false);
+      }, 5000);
+    }
     else{
       if (expName && expAmount) {
         const newExpItem ={name1: expName ,amount1: expAmount};
@@ -182,6 +202,11 @@ const Budget = ({currencySymbol}) => {
         {emptyIncome && (
         <Alert variant="warning" className='custom-alert'>
        Enter the Income Value first 
+        </Alert>
+      )}
+       {budgetEmpty && (
+        <Alert variant="warning" className='custom-alert'>
+       Set the Budget first. 
         </Alert>
       )}
       </div>
