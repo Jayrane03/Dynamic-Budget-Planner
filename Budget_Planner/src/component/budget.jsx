@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {Alert} from 'react-bootstrap'
 import "../css/cont.css";
 
-const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance ,  eventKey}) => {
+const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance ,currencySymbol}) => {
   let remainIncome = totalIncome - totalBudget;
-  let currencySymbol;
-  switch(eventKey) {
+  // let currencySymbol;
+  switch(currencySymbol) {
     case 'Rs':
       currencySymbol = '₹';
       break;
@@ -48,7 +48,7 @@ const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance ,  eventKey})
 };
 
 
-const Budget = ({eventKey}) => {
+const Budget = ({currencySymbol}) => {
  
 
   const [incomeName, setIncomeName] = useState('');
@@ -259,14 +259,14 @@ const Budget = ({eventKey}) => {
         </div>
        </div>
       </div>
-      <BudgetTable className="bud-table"
-        totalIncome={totalIncome}
-        totalBudget={totalBudget}
-        totalExp={parseFloat(totalExp)}
-        balance={parseFloat(totalBudget) - parseFloat(totalExp)}
-        eventKey={eventKey}
-       
-      />
+        <BudgetTable className="bud-table"
+          totalIncome={totalIncome}
+          totalBudget={totalBudget}
+          totalExp={parseFloat(totalExp)}
+          balance={parseFloat(totalBudget) - parseFloat(totalExp)}
+          currencySymbol={currencySymbol}
+        
+        />
       <div className="exp_list">
         <h2>Income List</h2>
         <div className="list_cont">

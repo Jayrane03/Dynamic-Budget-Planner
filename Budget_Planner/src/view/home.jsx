@@ -1,20 +1,20 @@
-import React from 'react';
-import Nav from '../component/nav'; // Corrected import statement
+import React, { useState } from 'react';
+import Nav from '../component/nav';
 import Budget from '../component/budget';
 
 const Home = () => {
-  // Remove unused useState import and state
+  const [currencySymbol, setCurrencySymbol] = useState("RS"); // State to hold currency symbol
 
-  // Define handleSelect function to pass to Nav component
   const handleSelect = (currency) => {
-    // Implement your logic here if needed
-    console.log("Selected currency:", currency);
+    // Update currencySymbol when the currency is changed
+    setCurrencySymbol(currency);
+    
   };
 
   return (
     <>
-      <Nav onChange={handleSelect} /> {/* Pass handleSelect function as prop */}
-      <Budget />
+      <Nav onChange={handleSelect} />
+      <Budget currencySymbol={currencySymbol} /> {/* Pass currencySymbol as prop */}
     </>
   );
 };

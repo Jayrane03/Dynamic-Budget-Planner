@@ -5,7 +5,7 @@ import "../css/responsive.css";
 import { Navbar, Container, Dropdown } from 'react-bootstrap';
 
 const Nav = ({ onChange }) => { 
-  const [selectedCurrency, setSelectedCurrency] = useState("Rs"); // Default currency symbol
+  const [selectedCurrency, setSelectedCurrency] = useState("RS"); // Default currency symbol
   
   const handleSelect = (eventKey, event) => {
     // Check if eventKey or event are undefined/null before accessing properties
@@ -31,7 +31,7 @@ const Nav = ({ onChange }) => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu className='drop-menu'>
-          <Dropdown.Item className="fw-bold" eventKey="Rs">Rs</Dropdown.Item>
+          <Dropdown.Item className="fw-bold" eventKey="RS">RS</Dropdown.Item>
           <Dropdown.Item className="fw-bold" eventKey="USD">USD</Dropdown.Item>
           <Dropdown.Item className="fw-bold" eventKey="EURO">EURO</Dropdown.Item>
         </Dropdown.Menu>
