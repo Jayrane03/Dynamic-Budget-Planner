@@ -270,7 +270,7 @@ const Budget = ({currencySymbol}) => {
       <div className="exp_list">
         <h2>Income List</h2>
         <div className="list_cont">
-          <h4 className="d-flex justify-content-end me-3 ">Total Income : {totalIncome} </h4>
+          <h6 className="d-flex justify-content-end me-3 ">Total Income : {totalIncome}  {currencySymbol} </h6>
           <ul id="list_one">
             {incomeList.map((item, index) => (
               <React.Fragment key={index}>
@@ -284,7 +284,8 @@ const Budget = ({currencySymbol}) => {
       <div className="exp_list">
         <h2>Expense List</h2>
         <div className="list_cont">
-        <h4 className="d-flex justify-content-end me-3 ">Total Expenses : {totalExp} </h4>
+        <h6 className="d-flex justify-content-end me-3">Total Expenses: {totalExp}  {currencySymbol} </h6>
+
          
            <ul id="list">
            {expList.map((item, index) => (
