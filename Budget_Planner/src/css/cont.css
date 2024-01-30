@@ -153,14 +153,6 @@
     }
     .output{
             /* width: 292vw !important; */
-    height: 60vh;
-    margin: 100px auto;
-    margin-left: -77px;
-    display: block;
-    flex-direction: column;
-    min-width: 94vw;
-    }
-} */
 
 .budget_span{
     background-color: #ff9900;

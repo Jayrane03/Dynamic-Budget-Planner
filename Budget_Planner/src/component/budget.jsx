@@ -2,39 +2,53 @@ import React, { useState } from 'react';
 import {Alert} from 'react-bootstrap'
 import "../css/cont.css";
 
-const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance }) => {
+const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance ,  eventKey}) => {
   let remainIncome = totalIncome - totalBudget;
-  // remainIncome = Math.max(remainIncome, 0);
+  let currencySymbol;
+  switch(eventKey) {
+    case 'Rs':
+      currencySymbol = '₹';
+      break;
+    case 'USD':
+      currencySymbol = '$';
+      break;
+    case 'EURO':
+      currencySymbol = '€';
+      break;
+    default:
+      currencySymbol = '₹';
+      break;
+  }
   return (
     <div className="output flex">
       <h2>Budget Table</h2>
       <div className="out_put">
         <p>Income</p>
-        <span id="income_amt">{totalIncome}</span>
+        <span id="income_amt">{currencySymbol} {totalIncome}</span>
       </div>
       <div className="out_put">
         <p>Income Remain</p>
-        <span id="remain_incom">{Math.abs(remainIncome)}</span>
+        <span id="remain_incom">{currencySymbol} {Math.abs(remainIncome)}</span>
 
       </div>
       <div className="out_put budget_span">
         <p className='budget_table_name'>Total Budget</p>
-        <span className="budget-amount"id="amount">{totalBudget}</span>
+        <span className="budget-amount"id="amount">{currencySymbol} {totalBudget}</span>
       </div>
       <div className="out_put">
         <p>Expenses</p>
-        <span id="exp_amt">{totalExp}</span>
+        <span id="exp_amt">{currencySymbol} {totalExp}</span>
       </div>
       <div className="out_put">
         <p>Budget   Balance</p>
-        <span id="bal_amount">{balance}</span>
+        <span id="bal_amount">{currencySymbol} {balance}</span>
       </div>
     </div>
   );
 };
 
 
-const Budget = () => {
+const Budget = ({eventKey}) => {
  
 
   const [incomeName, setIncomeName] = useState('');
@@ -50,6 +64,7 @@ const Budget = () => {
   const [budgetErrVisible, setBudgetErrVisible] = useState(false); // Initialize budgetErrVisible state
   const [emptyBud, setEmptyBud] = useState(false); // Initialize budgetErrVisible state
   const [emptyIncome, setemptyIncome] = useState(false); // Initialize budgetErrVisible state
+  // const [curSelct , setCurSelect] = useState("");
   
   // const handleIncomeNameChange = (event) => {
   //   setIncomeName(event.target.value);
@@ -249,6 +264,8 @@ const Budget = () => {
         totalBudget={totalBudget}
         totalExp={parseFloat(totalExp)}
         balance={parseFloat(totalBudget) - parseFloat(totalExp)}
+        eventKey={eventKey}
+       
       />
       <div className="exp_list">
         <h2>Income List</h2>

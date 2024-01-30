@@ -1,3 +1,27 @@
-.font-primary{
-    color: #ff9900;
-}
+/* WebKit (Chrome, Safari) */
+/* Track */
+::-webkit-scrollbar {
+    width: 10px; /* Adjust as needed */
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ff9900; /* Change this to the color you want */
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff9900; /* Change this to the color you want */
+  }
+  
+  /* Firefox */
+  /* Width */
+  html {
+    scrollbar-width: thin; /* "thin" is equivalent to the default width */
+  }
+  
+  /* Color */
+  html {
+    scrollbar-color: #ff9900 #1c2331; /* Change these colors to the ones you want */
+  }
+  
