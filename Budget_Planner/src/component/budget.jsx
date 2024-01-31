@@ -258,6 +258,7 @@ const Budget = ({currencySymbol}) => {
           <div className="edit_icon">
           <img src="../src/assets/edit.png" alt="" />
           <img src="../src/assets/add.png" alt="" />
+          <img src="../src/assets/add.png" alt="" />
           </div>
         </div>
         <div className="user_amount_container con">
