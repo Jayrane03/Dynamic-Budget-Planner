@@ -256,8 +256,8 @@ const Budget = ({currencySymbol}) => {
           <button onClick={setBudget} className="submit text-dark m-3" id="total_amount_button">Set Budget</button>
           <button className="submit text-dark m-4" id="total_amount_button">Add in %</button>
           <div className="edit_icon">
-          <img src="../assets/edit.png" alt="" />
-          <img src="../assets/add.png" alt="" />
+          <img src="../src/assets/edit.png" alt="" />
+          <img src="../src/assets/add.png" alt="" />
          
           </div>
         </div>
