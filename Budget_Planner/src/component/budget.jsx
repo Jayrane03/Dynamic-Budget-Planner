@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Alert} from 'react-bootstrap'
 import "../css/cont.css";
+import "boxicons"
 
 const BudgetTable = ({ totalIncome, totalBudget, totalExp, balance ,currencySymbol}) => {
   let remainIncome = totalIncome - totalBudget;
@@ -253,7 +254,11 @@ const Budget = ({currencySymbol}) => {
           />
           <br />
           <button onClick={setBudget} className="submit text-dark m-3" id="total_amount_button">Set Budget</button>
-          <button className="submit text-dark m-4" id="total_amount_button">Add in %</button>
+          {/* <button className="submit text-dark m-4" id="total_amount_button">Add in %</button> */}
+          <div className="edit_icon">
+          <img src="../src/assets/edit.png" alt="" />
+          <img src="../src/assets/add.png" alt="" />
+          </div>
         </div>
         <div className="user_amount_container con">
           <h2>Expenses</h2>

@@ -168,3 +168,17 @@
 .budget_span,.budget_table_name,.budget-amount{
     color: #1c2331 !important;
 }
+.edit_icon{
+ 
+    position: absolute;
+    top: 16%;
+    right: 36%;
+    cursor: pointer;
+}
+.edit_icon img{
+    height: 35px;
+    margin: 0 3px;
+}
+.edit_icon :nth-child(2){
+    height: 29px;
+}
