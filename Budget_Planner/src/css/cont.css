@@ -24,17 +24,16 @@
     width: 100%;
     width: 26vw;
     padding:8px;
-    border: 2px solid #d0d0dd;
+    color: #1c2331 !important;
+    border: 10px solid #d0d0dd;
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
+   
     outline: none;
     font-weight: 500;
 }
 .container input:focus{
     border-color:#ff9900;
+
 }
 .total_amount,
 .user_amount_container,
